@@ -1,0 +1,12 @@
+const express = require('express')
+const route = express.Router()
+const {controllers} = require('../controller')
+route.post('/login',controllers.admin.get)
+route.post('/',controllers.admin.create)
+route.get('/read',controllers.admin.read)
+route.post('/job',controllers.admin.addJob)
+route.get('/job',controllers.admin.readJob)
+route.get('/jobbypublisher/:id',controllers.admin.readJobbyPublisher)
+route.get('/jobbyid/:id',controllers.admin.readbyId)
+route.post('/hr',controllers.hr.create)
+module.exports = route

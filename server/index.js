@@ -1,0 +1,15 @@
+const express = require('express')
+const bodyParser=  require('body-parser')
+const cors = require('cors')
+const app = express()
+const connectDb  = require('./db/connection')
+const {routes} = require('./route')
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors());
+connectDb()
+app.use('/user',routes.user)
+app.use('/admin',routes.admin)
+app.listen(3001,()=>{
+    console.log('listening port 3001....')
+})

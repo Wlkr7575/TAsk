@@ -1,0 +1,10 @@
+const express = require('express')
+const upload = require('../lib/file')
+const {controllers} = require('../controller')
+const route  = express.Router()
+route.get('/')
+route.post('/',upload.single('cv'),controllers.user.create)
+route.post('/read',controllers.user.read)
+route.post('/login',controllers.user.login)
+route.patch('/:id',controllers.user.update)
+module.exports = route
